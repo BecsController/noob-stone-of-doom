@@ -1,17 +1,17 @@
 const request = require('supertest')
 
-jest.mock('../../server/db/greeting', () => ({
-  getGreetings: () => Promise.resolve([
-    {id: 1, text: 'test text 1'},
-    {id: 2, text: 'test text 2'}
+jest.mock('../../server/db/db', () => ({
+  getUsers: () => Promise.resolve([
+    {id: 1, name: 'RossDog'},
+    {id: 2, name: 'OhHayHay'}
   ])
 }))
 
 const server = require('../../server/server')
 
-test('GET /', () => {
+test('GET /users', () => {
   return request(server)
-    .get('/api/greetings')
+    .get('/api/users')
     .expect(200)
     .then(res => {
       expect(res.body.length).toBe(2)
