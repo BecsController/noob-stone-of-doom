@@ -12,8 +12,13 @@ function getLevels () {
   return db('levels')
 }
 
+function getLevel(id) {
+  return db('levels').select().where({id}).first()
+}
+
 module.exports = {
   getUsers,
   getBubbles,
-  getLevels
+  getLevels,
+  getLevel
 }

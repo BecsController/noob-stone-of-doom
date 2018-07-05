@@ -25,4 +25,12 @@ router.get('/levels', (req, res) => {
     })
 })
 
+router.get('/levels/:id', (req, res) => {
+  let id = req.params.id
+  db.getLevel(id)
+  .then(level => {
+    res.json(level)
+  })
+})
+
 module.exports = router
