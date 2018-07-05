@@ -1,18 +1,22 @@
-const db = require('./connection')
+const conn = require('./connection')
 
-function getUsers () {
+function getUsers (testDb) {
+  const db = testDb || conn
   return db('users')
 }
 
-function getBubbles () {
+function getBubbles (testDb) {
+  const db = testDb || conn
   return db('bubbles')
 }
 
-function getLevels () {
+function getLevels (testDb) {
+  const db = testDb || conn
   return db('levels')
 }
 
-function getLevel(id) {
+function getLevel(id, testDb) {
+  const db = testDb || conn
   return db('levels').select().where({id}).first()
 }
 

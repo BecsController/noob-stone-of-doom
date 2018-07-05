@@ -1,6 +1,6 @@
 const request = require('supertest')
 
-jest.mock('../../server/db/greeting', () => ({
+jest.mock('../../server/db/db', () => ({
   getGreetings: () => Promise.resolve([
     {id: 1, text: 'test text 1'},
     {id: 2, text: 'test text 2'}
