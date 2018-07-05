@@ -1,13 +1,22 @@
 import React from 'react'
-import {HashRouter as Router, Route} from 'react-router-dom'
+import { HashRouter as Router, Route } from 'react-router-dom'
+import Board from './Board'
 
-const App = () => (
-  <Router>
-    <div className='app-container section'>
-      <h1>Hello World</h1>
-      {/* <Route exact path="/" component={ComponentToRender} /> */}
-    </div>
-  </Router>
-)
+class App extends React.Component {
+  constructor(props) {
+    super(props)
+
+  }
+  render() {
+    return (
+      <Router>
+        <div className='app'>
+          <h1>NOOB STONE OF DOOM</h1>
+          <Route exact path="/" component={Board} />
+        </div>
+      </Router>
+    )
+  }
+}
 
 export default App
