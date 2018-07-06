@@ -1,26 +1,26 @@
-import greetingsReducer from '../../client/reducers/greetings'
+import bubbleReducer from '../../client/reducers/bubbles'
+import usersReducer from '../../client/reducers/users'
 
 test('Reducer Initial State', () => {
   const expected = []
 
-  const actual = greetingsReducer(undefined, {})
+  const actual = bubbleReducer(undefined, {})
 
   expect(actual).toEqual(expected)
 })
 
-test('RECEIVE_GREETINGS', () => {
-  const fakeGreetings = [
-    'Hello',
-    'Howdy'
+test('RECEIVE_BUBBLES', () => {
+  const fakeBubbles = [
+    {name: 'Hello'}
   ]
-  const expected = [...fakeGreetings]
+  const expected = [...fakeBubbles]
 
   const action = {
-    type: 'RECEIVE_GREETINGS',
-    greetings: fakeGreetings
+    type: 'RECEIVE_BUBBLES',
+    bubbles: fakeBubbles
   }
 
-  const actual = greetingsReducer(undefined, action)
+  const actual = bubbleReducer(undefined, action)
 
   expect(actual).toEqual(expected)
 })

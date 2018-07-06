@@ -1,51 +1,17 @@
-import {getGreetings, receiveGreetings} from '../../client/actions/greetings'
-import nock from 'nock'
+import {receiveBubbles} from '../../client/actions/index'
 
-test('Receive Greetings action creator', () => {
-  const fakeGreetings = [
+test('Receive bubbles action creator', () => {
+  const fakeBubbles = [
     'Hello',
     'Howdy'
   ]
 
   const expected = {
-    type: 'RECEIVE_GREETINGS',
-    greetings: fakeGreetings
+    type: 'RECEIVE_BUBBLES',
+    bubbles: fakeBubbles
   }
 
-  const actual = receiveGreetings(fakeGreetings)
+  const actual = receiveBubbles(fakeBubbles)
 
   expect(actual).toEqual(expected)
-})
-
-test('getGreetings will dispatch an action on success', () => {
-  const fakeGreetings = [
-    'Hello',
-    'Greetings'
-  ]
-  const scope = nock('http://localhost:80')
-    .get('/api/greetings')
-    .reply(200, fakeGreetings);
-
-  const expectedAction = {
-    type: 'RECEIVE_GREETINGS',
-    greetings: fakeGreetings
-  }
-
-  const dispatch = jest.fn()
-    .mockImplementationOnce(action => {
-      expect(action).toEqual(expectedAction)
-      scope.done()
-    })
-
-  getGreetings()(dispatch)
-
-})
-
-test('getGreetings error', () => {
-  const scope = nock('http://localhost:80')
-    .get('/api/greetings')
-    .reply(404);
-
-  const actual = getGreetings()()
-  expect(actual).toBe(undefined)
 })
