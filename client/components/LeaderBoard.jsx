@@ -24,13 +24,13 @@ class LeaderBoard extends React.Component {
   render(){
     const users = this.state.users.sort((a,b) => b.highscore - a.highscore)
     return (
-      <div className='box columns has-text-centered is-three-quarters'>
-      <div className="box column is-8">
+      <div style={{backgroundColor: 'green'}} className='box columns has-text-centered is-three-quarters'>
+      <div style={{marginLeft: '20vw', width: '50vw',float: 'center'}} className="box column is-8">
         <h2 className="is-size-1 has-text-link">Leaderboard</h2>
         <table>
         <tbody>
           <tr>
-            <th className="is-size-3 has-text-primary">Player</th>
+            <th style={{marginRight: '20vw', width: '20vw'}} className="is-size-3 has-text-primary">Player</th>
             <th className="is-size-3 has-text-primary">High Score</th>
           </tr>
         {users.map(user => (
