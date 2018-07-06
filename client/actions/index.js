@@ -23,6 +23,25 @@ export const receiveBubbles = (bubbles) => {
   }
 }
 
+export const receiveUsers = (users) => {
+  return {
+    type: 'RECEIVE_USERS',
+    users
+  }
+}
+
+export const requestUsers = () => {
+  return (dispatch) => {
+    request
+    .get(`/api/users`)
+    .then(res => {
+      dispatch(receiveUsers(res.body))
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
+}
 // module exports = {
 //   REQUEST_BUBBLES,
 //   RECEIVE_BUBBLES,
