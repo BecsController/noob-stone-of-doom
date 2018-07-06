@@ -5,12 +5,13 @@ class Bubble extends React.Component {
     super(props)
 
     this.state = {
+      id: props.id,
       cx: props.initial_x,
       cy: props.initial_y,
-      r: props.radius,
+      r: props.radius*5,
       fill: props.type == 'good' ? "purple" : "red",
-      xmove:3,
-      ymove:6
+      xmove:randomiseMove()/5,
+      ymove:randomiseMove()/5,
 
     }
     this.bubbleClick = this.bubbleClick.bind(this)
@@ -18,25 +19,45 @@ class Bubble extends React.Component {
   }
 
   componentDidMount(){
-    //maybe this is where we set an interval?
+    setInterval(this.moveBubble, 10)
+
   }
 
   bubbleClick() {
     //alert("PLAGUE THE GREAT AND POWERFUL SALUTES YOU!!!");
-    this.moveBubble()
+
+    this.props.type == 'good' ? alert('You scored') : alert('You lose points!')
+
   }
 
   moveBubble() {
-    console.log('moving')
+    let {id, cx, cy, xmove, ymove} = this.state
+    //console.log(`Bubble id ${id} moving from (${cx}, ${cy})`)
+    //console.log(`Max bounds are Width: ${this.props.width}, Height: ${this.props.height} `)
+
+    if (cx + xmove > this.props.width || cx + xmove < 0){
+      xmove *= -1;
+    }
+
+    if (cy + ymove > this.props.height || cy + ymove < 0){
+      ymove *= -1;
+    }
+
     this.setState({
-      cx: this.state.cx + this.state.xmove,
-      cy: this.state.cy + this.state.ymove,
+      xmove,
+      ymove,
+      cx: cx + xmove,
+      cy: cy + ymove,
     })
+
+
 
   }
 
+
+
   render() {
-    console.log('bubble', this.props.state)
+    //console.log('bubble: ', this.state)
     return (
       <circle cx={this.state.cx} cy={this.state.cy} r={this.state.r} fill={this.state.fill} onClick={this.bubbleClick} />
     )
@@ -44,5 +65,12 @@ class Bubble extends React.Component {
 
 }
 
+function randomiseMove() {
+  let move = (Math.random() *4)+1
+  if (Math.random() < 0.5) {
+    move *= -1;
+  }
+  return move;
+}
 
 export default Bubble
