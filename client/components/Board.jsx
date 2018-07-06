@@ -24,17 +24,18 @@ class Board extends React.Component {
     const height = window.innerHeight * 0.8
     //console.log(bubbles)
     return (
-      
+
       <div className="board" style={{width: width, height: height}}>
         <svg width={width} height={height} style={{backgroundColor: "pink"}}>
         {bubbles.map(bubble => {
           return (
-          <Bubble {...bubble} width={width} height={height}/>
+          <Bubble {...bubble} width={width} height={height} updateScore={this.props.updateScore}/>
         )
       })}
 
         </svg>
       </div>
+      
     )
   }
 
