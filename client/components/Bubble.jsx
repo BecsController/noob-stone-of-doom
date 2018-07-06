@@ -12,6 +12,7 @@ class Bubble extends React.Component {
       fill: props.type == 'good' ? "purple" : "red",
       xmove:randomiseMove()/5,
       ymove:randomiseMove()/5,
+      alive: true,
 
     }
     this.bubbleClick = this.bubbleClick.bind(this)
@@ -26,7 +27,14 @@ class Bubble extends React.Component {
   bubbleClick() {
     //alert("PLAGUE THE GREAT AND POWERFUL SALUTES YOU!!!");
 
-    this.props.type == 'good' ? alert('You scored') : alert('You lose points!')
+    if (this.props.type == 'good') {
+      alert('You scored');
+      this.setState({
+        alive:false,
+      })
+    }  else {
+      alert('You lose points!')
+    }
 
   }
 
@@ -58,9 +66,13 @@ class Bubble extends React.Component {
 
   render() {
     //console.log('bubble: ', this.state)
-    return (
-      <circle cx={this.state.cx} cy={this.state.cy} r={this.state.r} fill={this.state.fill} onClick={this.bubbleClick} />
-    )
+    if (this.state.alive) {
+      return (
+        <circle cx={this.state.cx} cy={this.state.cy} r={this.state.r} fill={this.state.fill} onClick={this.bubbleClick} />
+      )
+    } else {
+      return null;
+    }
   }
 
 }
