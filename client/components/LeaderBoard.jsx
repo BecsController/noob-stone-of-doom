@@ -1,18 +1,26 @@
-import React from 'react'
 
-const usersData = [
-  {id: 1, name: 'Ross', highscore: 100},
-  {id: 2, name: 'Hayden', highscore: 1000},
-  {id: 3, name: 'Cate', highscore: 999},
-  {id: 4, name: 'Cliff', highscore: 10},
-  {id: 5, name: 'Rebecca', highscore: 998}
-]
+import React from 'react'
+import {connect} from 'react-redux'
+import {requestUsers} from '../actions/index'
 
 class LeaderBoard extends React.Component {
   constructor(props){
     super(props)
+
+    this.state = {
+      users: []
+    }
   }
 
+    componentDidMount(){
+      this.props.dispatch(requestUsers())
+    }
+
+    componentWillReceiveProps (nextprops) {
+      this.setState ({
+        users: nextprops.users
+      })
+    }
   render(){
     const users = usersData.sort((a,b) => b.highscore - a.highscore)
     return (
@@ -39,4 +47,10 @@ class LeaderBoard extends React.Component {
   }
 }
 
-export default LeaderBoard
+function mapStateToProps(state) {
+  return {
+    users: state.users
+  }
+}
+
+export default connect(mapStateToProps)(LeaderBoard)
