@@ -5,10 +5,10 @@ class Bubble extends React.Component {
     super(props)
 
     this.state = {
-      cx: 100,
-      cy: 150,
-      r: 10,
-      fill: "purple",
+      cx: props.initial_x,
+      cy: props.initial_y,
+      r: props.radius,
+      fill: props.type == 'good' ? "purple" : "red",
       xmove:3,
       ymove:6
 
@@ -27,15 +27,16 @@ class Bubble extends React.Component {
   }
 
   moveBubble() {
-    console.log('trying to move')
+    console.log('moving')
     this.setState({
       cx: this.state.cx + this.state.xmove,
       cy: this.state.cy + this.state.ymove,
     })
-    
+
   }
 
   render() {
+    console.log('bubble', this.props.state)
     return (
       <circle cx={this.state.cx} cy={this.state.cy} r={this.state.r} fill={this.state.fill} onClick={this.bubbleClick} />
     )
