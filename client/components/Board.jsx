@@ -9,7 +9,8 @@ class Board extends React.Component {
 
     this.state = {
       score: 0,
-      bubbles: []
+      bubbles: [],
+      playerScore:0
     }
   }
 
@@ -21,13 +22,14 @@ class Board extends React.Component {
     const bubbles = this.props.bubbles
     const width = window.innerWidth * 0.8
     const height = window.innerHeight * 0.8
-    console.log(bubbles)
+    //console.log(bubbles)
     return (
+      
       <div className="board" style={{width: width, height: height}}>
         <svg width={width} height={height} style={{backgroundColor: "pink"}}>
         {bubbles.map(bubble => {
           return (
-          <Bubble {...bubble}/>
+          <Bubble {...bubble} width={width} height={height}/>
         )
       })}
 
