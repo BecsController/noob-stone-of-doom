@@ -10,8 +10,8 @@ class Bubble extends React.Component {
       cy: props.initial_y,
       r: props.radius*5,
       fill: props.type == 'good' ? "purple" : "red",
-      xmove:randomiseMove()/5,
-      ymove:randomiseMove()/5,
+      xmove:randomiseMove()/2.5,
+      ymove:randomiseMove()/2.5,
       alive: true,
 
     }
@@ -25,16 +25,18 @@ class Bubble extends React.Component {
   }
 
   bubbleClick() {
-    //alert("PLAGUE THE GREAT AND POWERFUL SALUTES YOU!!!");
+    console.log("PLAGUE THE GREAT AND POWERFUL SALUTES YOU!!!");
 
     if (this.props.type == 'good') {
-      alert('You scored');
+      //alert('You scored');
       this.setState({
         alive:false,
       })
     }  else {
-      alert('You lose points!')
+      //alert('You lose points!')
     }
+
+    this.props.updateScore(this.props.type == 'good')
 
   }
 
