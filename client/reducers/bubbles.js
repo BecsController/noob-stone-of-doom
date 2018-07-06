@@ -1,8 +1,6 @@
 import {RECEIVE_BUBBLES} from '../actions'
 
-const initalState = {
-  bubbles:[],
-}
+const initialState = []
 
 function bubbles(state = initialState, action) {
   const newState = {}
@@ -10,10 +8,10 @@ function bubbles(state = initialState, action) {
 
   switch (action.type) {
     case RECEIVE_BUBBLES:
-      newState.bubbles = action.bubbles
-      return newState;
+
+      return action.bubbles
     default:
-      return newState;
+      return state;
   }
 }
 

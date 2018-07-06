@@ -16,21 +16,23 @@ class LeaderBoard extends React.Component {
   render(){
     const users = usersData.sort((a,b) => b.highscore - a.highscore)
     return (
-      <div>
-        <h2>Leaderboard</h2>
+      <div className='box columns has-text-centered is-three-quarters'>
+      <div className="box column is-8">
+        <h2 className="is-size-1 has-text-link">Leaderboard</h2>
         <table>
           <tr>
-            <th>Player</th>
-            <th>High Score</th>
+            <th className="is-size-3 has-text-primary">Player</th>
+            <th className="is-size-3 has-text-primary">High Score</th>
           </tr>
         {users.map(user => (
           <tr>
-            <td>{user.name}</td>
-            <td>{user.highscore}</td>
+            <td className="is-size-4">{user.name}</td>
+            <td className="is-size-4">{user.highscore}</td>
           </tr>
         ))}
         </table>
       </div>
+        </div>
     )
   }
 }

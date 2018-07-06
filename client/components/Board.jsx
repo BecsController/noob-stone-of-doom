@@ -1,26 +1,35 @@
 import React from 'react'
 import Bubble from './Bubble'
-import { connect } from 'net';
+import { connect } from 'react-redux';
+import {requestBubbles} from '../actions/index'
 
 class Board extends React.Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      score: 0
+      score: 0,
+      bubbles: []
     }
   }
 
-
+  componentDidMount(){
+    this.props.dispatch(requestBubbles())
+  }
 
   render() {
+    const bubbles = this.props.bubbles
     const width = window.innerWidth * 0.8
     const height = window.innerHeight * 0.8
-    console.log(width, height)
+    console.log(bubbles)
     return (
       <div className="board" style={{width: width, height: height}}>
         <svg width={width} height={height} style={{backgroundColor: "pink"}}>
-        <Bubble />
+        {bubbles.map(bubble => {
+          return (
+          <Bubble {...bubble}/>
+        )
+      })}
 
         </svg>
       </div>
@@ -36,6 +45,4 @@ function mapStateToProps(state) {
   }
 }
 
-mapStateToProps()
-
-export default connect(mapStateToProps)()
+export default connect(mapStateToProps)(Board)

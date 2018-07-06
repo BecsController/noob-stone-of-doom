@@ -11,10 +11,10 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-        <div className='app'>
-          <h1>NOOB STONE OF DOOM</h1>
-          <Route exact path="/" component={LeaderBoard} />
-        </div>
+        <section className='section hero is-full-height is-bold'>
+          <h1 className='is-size-1 has-text-dark has-text-centered'>NOOB STONE OF DOOM</h1>
+          <Route exact path="/" component={Board} />
+        </section>
       </Router>
     )
   }
