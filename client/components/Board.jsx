@@ -1,5 +1,6 @@
 import React from 'react'
 import Bubble from './Bubble'
+import { connect } from 'net';
 
 class Board extends React.Component {
   constructor(props) {
@@ -29,6 +30,12 @@ class Board extends React.Component {
 
 }
 
+function mapStateToProps(state) {
+  return {
+    bubbles: state.bubbles
+  }
+}
 
+mapStateToProps()
 
-export default Board
+export default connect(mapStateToProps)()
