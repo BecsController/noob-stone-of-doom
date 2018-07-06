@@ -17,7 +17,7 @@ exports.seed = function(knex, Promise) {
         {id: 10, speed: 10, type: 'good', radius: 5, movement_pattern: 'normal', initial_x: 19, initial_y: 21},
         {id: 11, speed: 13, type: 'good', radius: 7, movement_pattern: 'normal', initial_x: 13, initial_y: 28},
         {id: 12, speed: 8, type: 'bad', radius: 2, movement_pattern: 'normal', initial_x: 30, initial_y: 35},
-        {id: 12, speed: 10, type: 'good', radius: 10, movement_pattern: 'normal', initial_x: 25, initial_y: 30},
+        {id: 13, speed: 10, type: 'good', radius: 10, movement_pattern: 'normal', initial_x: 25, initial_y: 30},
         {id: 14, speed: 4, type: 'bad', radius: 7, movement_pattern: 'normal', initial_x: 5, initial_y: 25},
         {id: 15, speed: 17, type: 'good', radius: 3, movement_pattern: 'normal', initial_x: 8, initial_y: 20},
         {id: 16, speed: 3, type: 'bad', radius: 8, movement_pattern: 'normal', initial_x: 14, initial_y: 15},
